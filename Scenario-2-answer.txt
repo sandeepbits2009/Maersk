@@ -1,0 +1,36 @@
+1. What are different artifacts you need to create - name of the artifacts and its purpose.
+
+Answer:
+We will store the main.tf file in one folder in repository and we will attached directly this folder to release pipeline that will act as artifact.
+
+2. List the tools you will to create and store the Terraform templates.
+
+Answer:
+terraform init
+terraform plan
+terraform apply --auto-approve
+
+3. Explain the process and steps to create automated deployment pipeline. 
+
+Answer:
+We will create the release pipeline that contain below tasks:
+Terraform Installer: which will install terraform software
+Terraform task1: for terraform init command
+Terraform task2: for terraform plan command
+Terraform task2: for terraform apply command
+
+4.  Create a sample Terraform template you will use to deploy Below services:
+ Vnet
+ 2 Subnet 
+ NSG to open port 80 and 443
+ 1 Window VM in each subnet
+ 1 Storage account
+
+Answer:
+you can find the main.tf file in github.
+
+5. Explain how will you access the password stored in Key Vault and use it as Admin Password in the VM 
+Terraform template.
+
+Answer:
+You can find the key vault template in main.tf that i created for step 4.

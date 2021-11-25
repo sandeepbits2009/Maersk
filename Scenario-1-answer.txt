@@ -1,0 +1,41 @@
+1. The build should trigger as soon as anyone in the dev team checks in code to master branch.
+Answer:
+a) Login to azure DevOps
+b) Go to the project where we are going to create CI/CD pipeline
+c) Then click the "Branches" and go to "Branch policy" under master branch
+d) Under "Build Validation" click "Add new build policy" and fill the required filled as mention below
+ "Build Pipeline"= Choose build pipeline that should build automatically in dropdown
+ "Trigger"= Automatic(whenever the source branch is updated)
+ "policy requirement"= Required
+And Then Save
+
+2. There will be test projects which will create and maintained in the solution along the Web and API. 
+The trigger should build all the 3 projects - Web, API and test.
+The build should not be successful if any test fails.
+
+Answer:
+In pipeline there is "Control Options" and we need uncheck "Continue on error" in every task.
+
+3.The deployment of code and artifacts should be automated to Dev environment.
+
+Answer:
+In build pipeline go to "Trigger" Session and checked the box "Enable continuous integration"
+In release pipeline go to Artifact section and click the "continuous deployment trigger" and "enabled" the release every time a new build is available.
+
+4. Upon successful deployment to the Dev environment, deployment should be easily promoted to QA 
+and Prod through automated process.
+
+Answer:
+In release pipeline, go to the QA stages and click "Pre-deployment conditions" and under Triggers "Select after stage triggers" and in drop down select the Dev stages.
+In release pipeline, go to the Prod stages and click "Pre-deployment conditions" and under Triggers "Select after stage triggers" and in drop down select the QA stages.
+Then finally "save" the release pipeline.
+
+5. The deployments to QA and Prod should be enabled with Approvals from approvers only.
+
+Answer:
+In release pipeline, go to the QA stages and click "Pre-deployment conditions" and enabled "pre-deployment approvals" and mentioned the person mail id who
+will approve the stages.
+
+In release pipeline, go to the Prod stages and click "Pre-deployment conditions" and enabled "pre-deployment approvals" and mentioned the person mail id who
+will approve the stages.
+Then finally "save" the release pipeline.
